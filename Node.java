@@ -6,6 +6,7 @@
 public class Node<T> {
     T value;
     Node<T> next;
+    Node<T> previous;
 
     /**
      * Constructor que inicializa un nodo con un valor dado.
@@ -15,6 +16,7 @@ public class Node<T> {
     public Node(T value){
         this.value = value;
         this.next = null;
+        this.previous = null;
     }
 
     /**
@@ -52,4 +54,13 @@ public class Node<T> {
     public void setNext(Node<T> next) {
         this.next = next;
     }
+
+    public Node<T> getPrevious() {
+        return this.previous;
+    }
+
+    public void setPrevious(Node<T> previous) {
+        this.previous = previous;
+    }
+
 }
