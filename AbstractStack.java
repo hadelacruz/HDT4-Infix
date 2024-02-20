@@ -12,4 +12,7 @@ public abstract class AbstractStack<T> {
      * @return el valor extraído de la pila.
      */
     abstract public T pop();
+
+    public abstract boolean isEmpty();
+
 }
