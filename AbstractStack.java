@@ -1,4 +1,5 @@
 public abstract class AbstractStack<T> {
+
     /**
      * Agrega un valor a la pila.
      * 

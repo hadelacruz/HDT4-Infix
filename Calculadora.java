@@ -7,11 +7,25 @@ import java.util.Scanner;
  * 
  * @param <T> el tipo de elementos en la calculadora.
  */
-public class Calculadora<T>{
+public class Calculadora<T> {
 
-    //private StackList stack = new StackList<>();
+    // Atributos
+    private static Calculadora calculadora;
     private AbstractStack stack;
     private boolean error = false;
+
+    // Constructor
+    public Calculadora() {
+    }
+
+    // Método para obtener la instancia única de la calculadora
+    public static Calculadora getInstance() {
+        if (calculadora == null) {
+            // Si la instancia aún no ha sido creada, la creamos
+            calculadora = new Calculadora();
+        }
+        return calculadora;
+    }
 
     public void tipoStack() {
         //
@@ -47,6 +61,7 @@ public class Calculadora<T>{
                             case 2:
                                 System.out.println("\nHa seleccionado Doblemente encadenada");
                                 stack = new StackListDouble<>();
+                                calculate();
                                 break;
                             case 0:
                                 System.out.println("\nVolviendo al menú principal...");
@@ -60,11 +75,12 @@ public class Calculadora<T>{
                 case 2:
                     System.out.println("\nHa seleccionado Array List");
                     stack = new StackArrayList<>();
-
+                    calculate();
                     break;
                 case 3:
                     System.out.println("\nHa seleccionado Vector");
                     stack = new StackVector<>();
+                    calculate();
                     break;
                 case 0:
                     System.out.println("Saliendo del programa...");
@@ -77,11 +93,6 @@ public class Calculadora<T>{
 
     }
 
-    public Calculadora() {
-        
-    }
-
-   
     public String readTXT() {
 
         try (FileReader fr = new FileReader("./datos.txt")) {
@@ -96,14 +107,10 @@ public class Calculadora<T>{
         return "";
     }
 
-   
     public void calculate() {
-        //Infix a Postfix
+        // Infix a Postfix
 
-
-
-
-        //Leera expresión Postfix
+        // Leera expresión Postfix
         String expresion = readTXT();
         // Elimina los espacios en blanco
         expresion = expresion.replaceAll("\\s", "");
@@ -137,26 +144,29 @@ public class Calculadora<T>{
 
         }
         if (!error) {
-            //
-           // System.out.println("Resultado: " + stack.lastNode.getValue());
-           System.out.println("HOLA");
-           
+            if (stack instanceof StackList) {
+                StackList stackList = (StackList) stack;
+                System.out.println("Resultado: " + stackList.lastNode.getValue());
+            }else if (stack instanceof StackListDouble){
+                
+                StackListDouble stackListDouble = (StackListDouble) stack;
+                System.out.println("Resultado: " + stackListDouble.lastNode.getValue());
+            }
+
         } else {
             System.out.println("Error, No es posible dentro de CERO");
         }
     }
 
-   
     public int sumar() {
         if (stack.size() >= 2) {
-            
+
             T operandoA = (T) stack.pop();
             T operandoB = (T) stack.pop();
             int resultado = Integer.parseInt(String.valueOf(operandoA)) + Integer.parseInt(String.valueOf(operandoB));
             stack.push(resultado);
             return resultado;
-            
-            
+
         } else {
             System.out.println("Error: Insuficientes operandos para la suma.");
             error = true;
@@ -165,7 +175,6 @@ public class Calculadora<T>{
 
     }
 
-    
     public int resta() {
         if (stack.size() >= 2) {
             T operandoA = (T) stack.pop();
@@ -180,7 +189,6 @@ public class Calculadora<T>{
         return 0;
     }
 
-    
     public int multiplicacion() {
         if (stack.size() >= 2) {
             T operandoA = (T) stack.pop();
@@ -195,7 +203,6 @@ public class Calculadora<T>{
         return 0;
     }
 
-    
     public boolean division() {
         if (stack.size() >= 2) {
             try {
@@ -219,7 +226,6 @@ public class Calculadora<T>{
         }
     }
 
-  
     public boolean isNumeric(String value) {
         try {
             // Intenta convertir el string a un número
