@@ -35,4 +35,9 @@ public class StackVector<T> extends AbstractStack<T> {
     public boolean isEmpty() {
         return stackVector.isEmpty();
     }
+
+    @Override
+    int size() {
+        return stackVector.size();
+    }
 }

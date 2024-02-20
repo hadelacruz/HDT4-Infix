@@ -2,9 +2,9 @@ public abstract class AbstractStack<T> {
     /**
      * Agrega un valor a la pila.
      * 
-     * @param value el valor que se agregará a la pila.
+     * @param resultado el valor que se agregará a la pila.
      */
-    abstract public void push(T value);
+    abstract public void push(T resultado);
 
     /**
      * Extrae un valor de la pila.
@@ -14,5 +14,7 @@ public abstract class AbstractStack<T> {
     abstract public T pop();
 
     public abstract boolean isEmpty();
+
+    abstract int size();
 
 }

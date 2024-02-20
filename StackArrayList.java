@@ -34,5 +34,10 @@ public class StackArrayList <T> extends AbstractStack<T>{
     public boolean isEmpty() {
         return stackArrayList.isEmpty();
     }
+
+    @Override
+    int size() {
+        return stackArrayList.size();
+    }
     
 }
