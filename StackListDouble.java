@@ -56,5 +56,11 @@ public class StackListDouble<T> extends AbstractStack<T> {
         }
         return count;
     }
+
+    @Override
+    public boolean isEmpty() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
+    }
     
 }
