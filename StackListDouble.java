@@ -1,6 +1,7 @@
 public class StackListDouble<T> extends AbstractStack<T> {
     protected Node<T> lastNode;
     protected Node<T> firstNode;
+    
 
     /**
      * {@inheritDoc}
@@ -12,9 +13,9 @@ public class StackListDouble<T> extends AbstractStack<T> {
             firstNode = lastNode;
         } else {
             Node<T> current = new Node<T>(value);
-            lastNode.setNext(current);
-            current.setPrevious(lastNode);
-            lastNode = current;
+            current.setNext(firstNode);
+            firstNode.setPrevious(current);
+            firstNode = current;
         }
     }
 
@@ -30,17 +31,17 @@ public class StackListDouble<T> extends AbstractStack<T> {
                 lastNode = null;
                 return valueT;
             } else {
-                // Si hay más de un nodo en la lista
-                T newFirstNode = firstNode.getValue();
-                firstNode =firstNode.getPrevious(); 
-                firstNode.setNext(null);
-                return  newFirstNode;
+                T valueFirst = firstNode.getValue();
+                firstNode = firstNode.getNext();
+                if (firstNode != null) {
+                    firstNode.setPrevious(null);
+                }
+                return valueFirst;
             }
         } else {
             return null;
         }
     }
-
 
     /**
      * Obtiene el tamaño actual de la pila.

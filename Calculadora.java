@@ -152,6 +152,14 @@ public class Calculadora<T> {
                 StackListDouble stackListDouble = (StackListDouble) stack;
                 System.out.println("Resultado: " + stackListDouble.lastNode.getValue());
             }
+            else if (stack instanceof StackVector){
+                StackVector stackVector = (StackVector) stack;
+                System.out.println("Resultado: " + stackVector.pop());
+            }
+            else if (stack instanceof StackArrayList){
+                StackArrayList stackArrayList = (StackArrayList) stack;
+                System.out.println("Resultado: " + stackArrayList.pop());
+            }
 
         } else {
             System.out.println("Error, No es posible dentro de CERO");
