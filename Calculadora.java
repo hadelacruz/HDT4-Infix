@@ -13,6 +13,7 @@ public class Calculadora<T> {
     private static Calculadora calculadora;
     private AbstractStack stack;
     private boolean error = false;
+    
 
     // Constructor
     public Calculadora() {
@@ -107,7 +108,9 @@ public class Calculadora<T> {
     
     public void calculate() {
         // Leera expresión Postfix
-        String expresion = readTXT();
+        String expresion = Converter.converterOperation();
+
+
         // Elimina los espacios en blanco
         expresion = expresion.replaceAll("\\s", "");
 

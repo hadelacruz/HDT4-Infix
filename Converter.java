@@ -46,7 +46,7 @@ public class Converter {
         return result.toString();
     }
 
-    public static void main(String[] args) {
+    public static String converterOperation() {
         try {
             File file = new File("datos.txt");
             Scanner scanner = new Scanner(file);
@@ -61,12 +61,12 @@ public class Converter {
 
             scanner.close();
 
-            // Sobreescribir el archivo con las expresiones postfix
-            FileWriter writer = new FileWriter(file);
-            writer.write(modifiedContent.toString());
-            writer.close();
 
-            System.out.println("Se han convertido las expresiones infix a postfix en el archivo datos.txt.");
+            // Sobreescribir el archivo con las expresiones postfix
+            // FileWriter writer = new FileWriter(file);
+            // writer.write(modifiedContent.toString());
+            // writer.close();
+            return modifiedContent.toString();
 
         } catch (FileNotFoundException e) {
             System.out.println("No se encontró el archivo datos.txt");
@@ -75,5 +75,6 @@ public class Converter {
             System.out.println("Error al escribir en el archivo datos.txt");
             e.printStackTrace();
         }
+        return "";
     }
 }
