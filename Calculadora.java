@@ -28,7 +28,7 @@ public class Calculadora<T> {
     }
 
     public void tipoStack() {
-        //
+
         Scanner scanner = new Scanner(System.in);
         int opcion;
         do {
@@ -90,11 +90,9 @@ public class Calculadora<T> {
             }
         } while (opcion != 0);
         scanner.close();
-
     }
 
     public String readTXT() {
-
         try (FileReader fr = new FileReader("./datos.txt")) {
             BufferedReader br = new BufferedReader(fr);
             // Lectura del fichero
@@ -106,10 +104,8 @@ public class Calculadora<T> {
         }
         return "";
     }
-
+    
     public void calculate() {
-        // Infix a Postfix
-
         // Leera expresión Postfix
         String expresion = readTXT();
         // Elimina los espacios en blanco
@@ -147,8 +143,8 @@ public class Calculadora<T> {
             if (stack instanceof StackList) {
                 StackList stackList = (StackList) stack;
                 System.out.println("Resultado: " + stackList.lastNode.getValue());
-            }else if (stack instanceof StackListDouble){
-                
+            } else if (stack instanceof StackListDouble) {
+
                 StackListDouble stackListDouble = (StackListDouble) stack;
                 System.out.println("Resultado: " + stackListDouble.lastNode.getValue());
             }
