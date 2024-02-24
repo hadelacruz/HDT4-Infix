@@ -39,5 +39,4 @@ public class StackArrayList <T> extends AbstractStack<T>{
     int size() {
         return stackArrayList.size();
     }
-    
 }

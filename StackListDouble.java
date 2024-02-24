@@ -1,7 +1,6 @@
 public class StackListDouble<T> extends AbstractStack<T> {
     protected Node<T> lastNode;
     protected Node<T> firstNode;
-    
 
     /**
      * {@inheritDoc}
@@ -63,5 +62,4 @@ public class StackListDouble<T> extends AbstractStack<T> {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
     }
-    
 }

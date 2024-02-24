@@ -13,7 +13,6 @@ public class Calculadora<T> {
     private static Calculadora calculadora;
     private AbstractStack stack;
     private boolean error = false;
-    
 
     // Constructor
     public Calculadora() {
@@ -243,4 +242,7 @@ public class Calculadora<T> {
         }
     }
 
+    public void setStack(AbstractStack stack) {
+        this.stack = stack;
+    }
 }

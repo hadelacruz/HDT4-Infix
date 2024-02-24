@@ -17,5 +17,4 @@ public abstract class AbstractStack<T> {
     public abstract boolean isEmpty();
 
     abstract int size();
-
 }

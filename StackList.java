@@ -58,6 +58,5 @@ public class StackList<T> extends AbstractStack<T>{
     public boolean isEmpty() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
-    }
-    
+    }   
 }

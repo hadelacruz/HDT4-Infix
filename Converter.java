@@ -61,11 +61,10 @@ public class Converter {
 
             scanner.close();
 
-
             // Sobreescribir el archivo con las expresiones postfix
-            // FileWriter writer = new FileWriter(file);
-            // writer.write(modifiedContent.toString());
-            // writer.close();
+            FileWriter writer = new FileWriter(file);
+            writer.write(modifiedContent.toString());
+            writer.close();
             return modifiedContent.toString();
 
         } catch (FileNotFoundException e) {
