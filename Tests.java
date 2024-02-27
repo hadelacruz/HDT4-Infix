@@ -64,19 +64,61 @@ public class Tests {
         assertTrue(stack.isEmpty());
     }
 
-    //Test de la StackList
+    // Test de la StackList
     @Test
     public void testSizeEmptyStack() {
         // Crear una nueva pila vacía
         StackList<Double> stack = new StackList<>();
-        
+
         // Verificar que el tamaño de la pila sea cero inicialmente
         assertEquals(0, stack.size());
-        
+
         // Empujar un elemento a la pila
         stack.push(3.14);
-        
+
         // Verificar que el tamaño de la pila sea uno después de empujar un elemento
         assertEquals(1, stack.size());
+    }
+
+    // Tets de la StackListDouble
+    @Test
+    public void pushAndPopTest() {
+        // Crear una nueva pila
+        StackListDouble<Integer> stack = new StackListDouble<>();
+
+        // Verificar que la pila esté vacía inicialmente
+        assertEquals(0, stack.size());
+
+        // Empujar algunos elementos a la pila
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+
+        // Verificar el tamaño de la pila después de empujar elementos
+        assertEquals(3, stack.size());
+
+        // Verificar el orden correcto al sacar elementos de la pila
+        assertEquals(Integer.valueOf(3), stack.pop());
+        assertEquals(Integer.valueOf(2), stack.pop());
+        assertEquals(Integer.valueOf(1), stack.pop());
+
+        // Verificar que la pila esté vacía después de sacar todos los elementos
+        assertEquals(0, stack.size());
+    }
+
+    // Test de la StackVector
+    @Test
+    public void testPopEmptyStack() {
+        // Crear una nueva pila vacía
+        StackVector<String> stack = new StackVector<>();
+
+        // Verificar que la pila esté vacía inicialmente
+        assertTrue(stack.isEmpty());
+
+        // Intentar sacar un elemento de una pila vacía
+        assertNull(stack.pop());
+
+        // Verificar que la pila sigue vacía después de intentar sacar un elemento
+        assertTrue(stack.isEmpty());
     }
 }

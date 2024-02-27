@@ -10,8 +10,19 @@ import java.util.Scanner;
 public class Calculadora<T> {
 
     // Atributos
+    /**
+     * Instancia única de la Calculadora (patrón Singleton).
+     */
     private static Calculadora calculadora;
+
+    /**
+     * Pila de operaciones utilizada por la calculadora.
+     */
     private AbstractStack stack;
+
+    /**
+     * Variable que indica si ha ocurrido un error durante las operaciones de la calculadora.
+     */
     private boolean error = false;
 
     // Constructor
@@ -27,6 +38,9 @@ public class Calculadora<T> {
         return calculadora;
     }
 
+    /*
+     * Ménú que se encarga de gestionar el flujo del programa.
+     */
     public void tipoStack() {
 
         Scanner scanner = new Scanner(System.in);
@@ -92,6 +106,11 @@ public class Calculadora<T> {
         scanner.close();
     }
 
+    /**
+     * Lee el contenido de un archivo de texto y devuelve la primera línea.
+     *
+     * @return La primera línea del archivo de texto, o una cadena vacía si hay un error.
+     */
     public String readTXT() {
         try (FileReader fr = new FileReader("./datos.txt")) {
             BufferedReader br = new BufferedReader(fr);
@@ -105,6 +124,9 @@ public class Calculadora<T> {
         return "";
     }
     
+    /*
+     * Método encargado de gestionar cada una de las operaciones.
+     */
     public void calculate() {
         // Leera expresión Postfix
         String expresion = Converter.converterOperation();
@@ -164,6 +186,11 @@ public class Calculadora<T> {
         }
     }
 
+    /**
+     * Realiza la operación de suma con los dos elementos superiores de la pila.
+     *
+     * @return El resultado de la suma, o 0 en caso de error.
+     */
     public int sumar() {
         if (stack.size() >= 2) {
 
@@ -181,6 +208,11 @@ public class Calculadora<T> {
 
     }
 
+    /**
+     * Realiza la operación de resta con los dos elementos superiores de la pila.
+     *
+     * @return El resultado de la resta, o 0 en caso de error.
+     */    
     public int resta() {
         if (stack.size() >= 2) {
             T operandoA = (T) stack.pop();
@@ -195,6 +227,11 @@ public class Calculadora<T> {
         return 0;
     }
 
+    /**
+    * Realiza la operación de multiplicación con los dos elementos superiores de la pila.
+    *
+    * @return El resultado de la multiplicación, o 0 en caso de error.
+    */
     public int multiplicacion() {
         if (stack.size() >= 2) {
             T operandoA = (T) stack.pop();
@@ -209,6 +246,12 @@ public class Calculadora<T> {
         return 0;
     }
 
+    /**
+    * Realiza la operación de división con los dos elementos superiores de la pila.
+    * 
+    *
+    * @return true si la división se realiza con éxito, false en caso contrario.
+    */
     public boolean division() {
         if (stack.size() >= 2) {
             try {
@@ -232,6 +275,11 @@ public class Calculadora<T> {
         }
     }
 
+    /* Verifica si un string es numérico.
+    *
+    * @param value El string que se va a verificar.
+    * @return true si el string es un valor numérico, false en caso contrario.
+    */
     public boolean isNumeric(String value) {
         try {
             // Intenta convertir el string a un número
@@ -242,6 +290,11 @@ public class Calculadora<T> {
         }
     }
 
+    /**
+     * Establece la instancia de AbstractStack que se utilizará.
+     *
+     * @param stack La instancia de AbstractStack que se establecerá.
+     */
     public void setStack(AbstractStack stack) {
         this.stack = stack;
     }

@@ -4,6 +4,12 @@ import java.util.Stack;
 
 public class Converter {
 
+    /**
+     * Método para determinar la precedencia de un operador.
+     *
+     * @param c El operador cuya precedencia se desea conocer.
+     * @return El nivel de precedencia del operador, o -1 si el operador no es reconocido.
+     */
     static int precedence(char c) {
         switch (c) {
             case '+':
@@ -18,6 +24,11 @@ public class Converter {
         return -1;
     }
 
+    /**
+     * Lee expresiones infix desde un archivo, las convierte a postfix y devuelve el contenido modificado.
+     *
+     * @return Una cadena que contiene las expresiones en formato postfix, o una cadena vacía en caso de error.
+     */
     static String infixToPostfix(String expresion) {
         StringBuilder result = new StringBuilder();
         Stack<Character> stack = new Stack<>();
@@ -46,6 +57,11 @@ public class Converter {
         return result.toString();
     }
 
+    /**
+     * Lee expresiones infix desde un archivo, las convierte a postfix y devuelve el contenido modificado.
+     *
+     * @return Una cadena que contiene las expresiones en formato postfix, o una cadena vacía en caso de error.
+     */
     public static String converterOperation() {
         try {
             File file = new File("datos.txt");
@@ -61,10 +77,6 @@ public class Converter {
 
             scanner.close();
 
-            // Sobreescribir el archivo con las expresiones postfix
-            FileWriter writer = new FileWriter(file);
-            writer.write(modifiedContent.toString());
-            writer.close();
             return modifiedContent.toString();
 
         } catch (FileNotFoundException e) {

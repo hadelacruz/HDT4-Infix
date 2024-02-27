@@ -4,8 +4,17 @@
  * @param <T> el tipo de elemento en el nodo.
  */
 public class Node<T> {
+    /**
+     * Valor almacenado en el nodo.
+     */
     T value;
+    /**
+     * Referencia al siguiente nodo en la estructura enlazada.
+     */
     Node<T> next;
+    /**
+     * Referencia al nodo anterior en la estructura enlazada.
+     */
     Node<T> previous;
 
     /**
@@ -55,10 +64,20 @@ public class Node<T> {
         this.next = next;
     }
 
+    /**
+     * Obtiene el nodo anterior en la estructura enlazada.
+     *
+     * @return El nodo anterior al actual.
+     */
     public Node<T> getPrevious() {
         return this.previous;
     }
 
+    /**
+     * Establece el nodo anterior en la estructura enlazada.
+     *
+     * @param previous El nuevo nodo anterior al actual.
+     */
     public void setPrevious(Node<T> previous) {
         this.previous = previous;
     }
